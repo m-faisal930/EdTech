@@ -1,16 +1,17 @@
 // 📁 client/src/pages/Login.jsx
 import { useState, useContext } from 'react';
-// import { AuthContext } from '../context/authContext';
+import { AuthContext } from '../context/authContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('student');
-  // const { login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // await login({ email, password, role });
+    console.log('Logging', { email, password, role });
+    await login({ email, password, role });
   };
 
   return (
