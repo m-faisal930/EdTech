@@ -8,7 +8,8 @@ import RoleSelect from './pages/RoleSelect';
 import TeacherLogin from './pages/TeacherLogin';
 import StudentLogin from './pages/StudentLogin';
 import StudentDashboard from './pages/StudentDashboard';
-import { TeacherDashboard } from './pages/TeacherDashboard';
+import TeacherDashboard from './pages/TeacherDashboard';
+import MaterialInsights from './pages/MaterialInsights';
 
 // Utilities
 import ProtectedRoute from './utils/ProtectedRoute';
@@ -44,11 +45,11 @@ function App() {
           <Route
             path="/teacher-dashboard"
             element={
-              <ProtectedRoute role="tutor">
                 <TeacherDashboard />
-              </ProtectedRoute>
             }
           />
+
+          <Route path="/insights" element={<MaterialInsights/>}/>
 
           {/* 404 fallback */}
           <Route

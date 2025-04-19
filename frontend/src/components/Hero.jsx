@@ -44,7 +44,7 @@ export const Hero = () => {
 
   return (
     <BackgroundBeamsWithCollision className="relative z-10">
-      <div className="flex flex-col md:flex-row justify-between pt-12 px-4">
+      <div className="flex flex-col md:flex-row justify-between pt-4 px-4">
         {/* text div */}
         <div className="flex flex-col mt-8 md:mt-32 px-4 md:px-8">
           <h1 className="text-2xl md:text-6xl font-outfit font-bold text-[#003060] mb-4">

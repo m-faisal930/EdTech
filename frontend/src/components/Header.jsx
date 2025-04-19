@@ -1,11 +1,9 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [hidden, setHidden] = useState(true);
 
   return (
-    <nav className="bg-white w-full min-h-20 border-b border-[#d3bdf0]">
+    <nav className="bg-white w-full min-h-16 border-b border-[#d3bdf0]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3 max-md:mt-2 max-md:mb-6">
@@ -25,7 +23,7 @@ const Header = () => {
               Login
             </button>
           </Link>
-          <Link to="/signup">
+          <Link to="/register">
             <button
               type="button"
               className="bg-[#003060] text-white hover:bg-white hover:text-[#003060] border-2 border-[#003060] font-medium rounded-lg text-sm px-4 py-2 transition"
