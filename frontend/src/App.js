@@ -4,6 +4,7 @@ import { AuthProvider } from './context/authContext';
 // Pages
 import { Home } from './pages/Home';
 import SignUp from './pages/SignUp';
+import RoleSelect from './pages/RoleSelect';
 import TeacherLogin from './pages/TeacherLogin';
 import StudentLogin from './pages/StudentLogin';
 import StudentDashboard from './pages/StudentDashboard';
@@ -18,9 +19,15 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Home/>}/>
+
+          {/* Common Register Page */}
+          <Route path="/register" element={<SignUp />} />
+
           {/* Login Routes */}
           <Route path="/teacher-login" element={<TeacherLogin />} />
           <Route path="/student-login" element={<StudentLogin />} />
+
+          <Route path="/role-select" element={<RoleSelect/>}/>
 
           {/* Common Register Page */}
           <Route path="/register" element={<SignUp />} />
