@@ -1,9 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/authContext';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import StudentDashboard from './pages/studentDashboard';
-import TutorDashboard from './pages/tutorDashboard';
+
+// Pages
+import { Home } from './pages/Home';
+import SignUp from './pages/SignUp';
+import TeacherLogin from './pages/TeacherLogin';
+import StudentLogin from './pages/StudentLogin';
+import StudentDashboard from './pages/StudentDashboard';
+import { TeacherDashboard } from './pages/TeacherDashboard';
+
+// Utilities
 import ProtectedRoute from './utils/ProtectedRoute';
 
 function App() {
@@ -11,11 +17,17 @@ function App() {
     <Router>
       <AuthProvider>
         <Routes>
-      
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Home/>}/>
+          {/* Login Routes */}
+          <Route path="/teacher-login" element={<TeacherLogin />} />
+          <Route path="/student-login" element={<StudentLogin />} />
+
+          {/* Common Register Page */}
+          <Route path="/register" element={<SignUp />} />
+
+          {/* Dashboards with role protection */}
           <Route
-            path="/student"
+            path="/student-dashboard"
             element={
               <ProtectedRoute role="student">
                 <StudentDashboard />
@@ -23,13 +35,15 @@ function App() {
             }
           />
           <Route
-            path="/tutor"
+            path="/teacher-dashboard"
             element={
               <ProtectedRoute role="tutor">
-                <TutorDashboard />
+                <TeacherDashboard />
               </ProtectedRoute>
             }
           />
+
+          {/* 404 fallback */}
           <Route
             path="*"
             element={<div className="p-4">404 - Page Not Found</div>}
