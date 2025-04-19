@@ -1,9 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/authContext';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import StudentDashboard from './pages/studentDashboard';
-import TutorDashboard from './pages/tutorDashboard';
+
+// Pages
+import { Home } from './pages/Home';
+import SignUp from './pages/SignUp';
+import RoleSelect from './pages/RoleSelect';
+import TeacherLogin from './pages/TeacherLogin';
+import StudentLogin from './pages/StudentLogin';
+import StudentDashboard from './pages/StudentDashboard';
+import { TeacherDashboard } from './pages/TeacherDashboard';
+
+// Utilities
 import ProtectedRoute from './utils/ProtectedRoute';
 import ChatRoom from './pages/ChatRoom';
 import ChatProtectedRoute from './utils/ChatProtectedRoute';
@@ -13,10 +20,23 @@ function App() {
     <Router>
       <AuthProvider>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Home/>}/>
+
+          {/* Common Register Page */}
+          <Route path="/register" element={<SignUp />} />
+
+          {/* Login Routes */}
+          <Route path="/teacher-login" element={<TeacherLogin />} />
+          <Route path="/student-login" element={<StudentLogin />} />
+
+          <Route path="/role-select" element={<RoleSelect/>}/>
+
+          {/* Common Register Page */}
+          <Route path="/register" element={<SignUp />} />
+
+          {/* Dashboards with role protection */}
           <Route
-            path="/student"
+            path="/student-dashboard"
             element={
               <ProtectedRoute role="student">
                 <StudentDashboard />
@@ -24,22 +44,15 @@ function App() {
             }
           />
           <Route
-            path="/tutor"
+            path="/teacher-dashboard"
             element={
               <ProtectedRoute role="tutor">
-                <TutorDashboard />
+                <TeacherDashboard />
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/chat/:courseId"
-            element={
-              <ChatProtectedRoute>
 
-                <ChatRoom />
-              </ChatProtectedRoute>
-            }
-          />
+          {/* 404 fallback */}
           <Route
             path="*"
             element={<div className="p-4">404 - Page Not Found</div>}
