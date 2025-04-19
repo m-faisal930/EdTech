@@ -13,6 +13,8 @@ import MaterialInsights from './pages/MaterialInsights';
 
 // Utilities
 import ProtectedRoute from './utils/ProtectedRoute';
+import ChatRoom from './pages/ChatRoom';
+import ChatProtectedRoute from './utils/ChatProtectedRoute';
 
 function App() {
   return (
